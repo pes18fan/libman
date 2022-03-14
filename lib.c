@@ -92,9 +92,9 @@ void addbookinf()
     }
  
     fclose(fp);
-    system("pause");
 
-    main();
+    system("pause");
+    mainmenu();
 }
  
 void readbookinf() {
@@ -120,9 +120,9 @@ void readbookinf() {
     }
  
     fclose(fp);
-    system("pause");
 
-    main();
+    system("pause");
+    mainmenu();
 }
  
 void readauthor() 
@@ -143,8 +143,9 @@ void readauthor()
     }
  
     fclose(fp);
+
     system("pause");
-    main();
+    mainmenu();
 }
  
 void listtitle() 
@@ -167,8 +168,9 @@ void listtitle()
     }
  
     fclose(fp);
+
     system("pause");
-    main();
+    mainmenu();
 }
  
 int bookcount() {
@@ -192,8 +194,9 @@ int bookcount() {
     fclose(fp);
  
     return n;
+
     system("pause");
-    main();
+    mainmenu();
 }
  
 void arrangebookaccnum() {
@@ -223,6 +226,7 @@ void arrangebookaccnum() {
     }
 
     fclose(fp);
+
     system("pause");
-    main();
+    mainmenu();
 }
