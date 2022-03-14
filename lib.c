@@ -97,7 +97,8 @@ void addbookinf()
     mainmenu();
 }
  
-void readbookinf() {
+void readbookinf() 
+{
     int i = 0;
     libr lib[50];
  
@@ -106,7 +107,8 @@ void readbookinf() {
     char buffer[200];
     fgets(buffer, 200, fp);
  
-    while (!feof(fp)) {
+    while (!feof(fp)) 
+    {
         libr* l = lib + i;
         sscanf(buffer, "%d %s %s %f", &l->accnum, l->btitle, l->author, &l->price);
         fgets(buffer, 200, fp);
@@ -115,7 +117,8 @@ void readbookinf() {
  
     int n = i;
  
-    for (i = 0; i < n; i++) {
+    for (i = 0; i < n; i++) 
+    {
         printf("%5d %15s %15s %10f\n", lib[i].accnum, lib[i].btitle, lib[i].author, lib[i].price);
     }
  
@@ -136,7 +139,8 @@ void readauthor()
  
     while (fscanf(fp, "%d %s %s %f", &lib[i].accnum, lib[i].btitle, lib[i].author, &lib[i].price) != EOF) 
     {
-        if (!strcmp(lib[i].author, auname)) {
+        if (!strcmp(lib[i].author, auname)) 
+        {
             printf("%15s %s %lf\n", lib[i].btitle, lib[i].author, lib[i].price);
         }
         i++;
@@ -173,7 +177,8 @@ void listtitle()
     mainmenu();
 }
  
-int bookcount() {
+int bookcount() 
+{
     int i = 0;
     libr lib[50];
  
@@ -182,7 +187,8 @@ int bookcount() {
     char buffer[200];
     fgets(buffer, 200, fp);
  
-    while (!feof(fp)) {
+    while (!feof(fp)) 
+    {
         libr* l = lib + i;
         sscanf(buffer, "%d %s %s %f", &l->accnum, l->btitle, l->author, &l->price);
         fgets(buffer, 200, fp);
@@ -199,15 +205,18 @@ int bookcount() {
     mainmenu();
 }
  
-void arrangebookaccnum() {
+void arrangebookaccnum() 
+{
     int i = 0, n = bookcount();
     printf("%d\n", n);
     libr lib[n];
     fp = fopen("lib.dat", "r");
  
-    while (fscanf(fp, "%d %s %s %f", &lib[i].accnum, lib[i].btitle, lib[i].author, &lib[i].price) != EOF) {
+    while (fscanf(fp, "%d %s %s %f", &lib[i].accnum, lib[i].btitle, lib[i].author, &lib[i].price) != EOF) 
+    {
         i++;
     }
+    
     for (i = 0; i < n; i++) 
     {
         for (int j = 0; j < n - 1; j++) 
