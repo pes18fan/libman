@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+void mainmenu();
 void addbookinf();
 void readbookinf();
 void readauthor();
@@ -19,6 +20,11 @@ typedef struct library {
 } libr;
  
 int main() 
+{
+    mainmenu();
+}
+
+void mainmenu()
 {
     int option;
     int bc;
