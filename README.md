@@ -1,6 +1,6 @@
 # c-library
 
-A simple console application built on C that can be used to do some simple library-based management tasks.
+A simple console application built on C that can be used to do some simple library-based management tasks. Supports upto 50 instances of book info storage; increase it by changing the array size for the library structure.
 
 # Capabilities
 
