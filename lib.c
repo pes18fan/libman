@@ -12,12 +12,13 @@ void arrangebookaccnum();
  
 FILE* fp;
  
-typedef struct library {
+struct library 
+{
     int accnum;
     char btitle[30];
     char author[30];
     float price;
-} libr;
+} lib[50];
  
 int main() 
 {
@@ -40,7 +41,8 @@ void mainmenu()
  
     scanf("%d", &option);
  
-    switch (option) {
+    switch (option) 
+    {
         case 1:
             addbookinf();
             break;
@@ -56,7 +58,8 @@ void mainmenu()
         case 5:
             bc = bookcount();
             printf("The number of books is %d\n", bc);
-            break;
+            system("pause");
+            mainmenu();
         case 6:
             arrangebookaccnum();
             break;
@@ -70,12 +73,12 @@ void addbookinf()
     fp = fopen("lib.dat", "a");
  
     int i, newbookc;
-    libr lib[50];
  
     printf("Enter number of books to add\n");
     scanf("%d", &newbookc);
  
-    for (i = 0; i < newbookc; i++) {
+    for (i = 0; i < newbookc; i++) 
+    {
         printf("Enter book access number\n");
         scanf("%d", &lib[i].accnum);
  
@@ -87,7 +90,7 @@ void addbookinf()
  
         printf("Enter price\n");
         scanf("%f", &lib[i].price);
- 
+
         fprintf(fp, "%5d %15s %15s %10f\n", lib[i].accnum, lib[i].btitle, lib[i].author, lib[i].price);
     }
  
@@ -100,18 +103,11 @@ void addbookinf()
 void readbookinf() 
 {
     int i = 0;
-    libr lib[50];
  
     fp = fopen("lib.dat", "r");
  
-    char buffer[200];
-    fgets(buffer, 200, fp);
- 
-    while (!feof(fp)) 
+    while(fscanf(fp, "%d %s %s %f", &lib[i].accnum, lib[i].btitle, lib[i].author, &lib[i].price) != EOF) 
     {
-        libr* l = lib + i;
-        sscanf(buffer, "%d %s %s %f", &l->accnum, l->btitle, l->author, &l->price);
-        fgets(buffer, 200, fp);
         i++;
     }
  
@@ -131,10 +127,11 @@ void readbookinf()
 void readauthor() 
 {
     int i = 0;
-    libr lib[50];
     char auname[30];
+
     printf("Enter required author\n");
     scanf("%s", auname);
+
     fp = fopen("lib.dat", "r");
  
     while (fscanf(fp, "%d %s %s %f", &lib[i].accnum, lib[i].btitle, lib[i].author, &lib[i].price) != EOF) 
@@ -155,14 +152,12 @@ void readauthor()
 void listtitle() 
 {
     int i, an;
-    libr lib[50];
  
     printf("Enter accession number for book\n");
     scanf("%d", &an);
  
     fp = fopen("lib.dat", "r");
- 
-    char buffer[200];
+
     while (fscanf(fp, "%d %s %s %f", &lib[i].accnum, lib[i].btitle, lib[i].author, &lib[i].price) != EOF) 
     {
         if (lib[i].accnum == an) 
@@ -176,29 +171,20 @@ void listtitle()
     system("pause");
     mainmenu();
 }
- 
-int bookcount() 
+
+int bookcount()
 {
     int i = 0;
-    libr lib[50];
- 
+
     fp = fopen("lib.dat", "r");
- 
-    char buffer[200];
-    fgets(buffer, 200, fp);
- 
-    while (!feof(fp)) 
+
+    while(fscanf(fp, "%d %s %s %f", &lib[i].accnum, lib[i].btitle, lib[i].author, &lib[i].price) != EOF) 
     {
-        libr* l = lib + i;
-        sscanf(buffer, "%d %s %s %f", &l->accnum, l->btitle, l->author, &l->price);
-        fgets(buffer, 200, fp);
         i++;
     }
- 
+
     int n = i;
- 
-    fclose(fp);
- 
+
     return n;
 
     system("pause");
@@ -208,8 +194,8 @@ int bookcount()
 void arrangebookaccnum() 
 {
     int i = 0, n = bookcount();
-    printf("%d\n", n);
-    libr lib[n];
+    struct library temp;
+    
     fp = fopen("lib.dat", "r");
  
     while (fscanf(fp, "%d %s %s %f", &lib[i].accnum, lib[i].btitle, lib[i].author, &lib[i].price) != EOF) 
@@ -223,12 +209,13 @@ void arrangebookaccnum()
         {
             if (lib[j].accnum > lib[j + 1].accnum) 
             {
-                libr temp = lib[j];
+                temp = lib[j];
                 lib[j] = lib[j + 1];
                 lib[j + 1] = temp;
             }
         }
     }
+    
     for (i = 0; i < n; i++) 
     {
         printf("%5d %15s %15s %10f\n", lib[i].accnum, lib[i].btitle,lib[i].author, lib[i].price);
