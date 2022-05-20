@@ -1,6 +1,6 @@
 # libman
 
-A simple console application built on C that can be used to do some simple library-based management tasks.
+A simple console application built on C that can be used to do some simple library management tasks.
 
 # Capabilities
 
@@ -10,7 +10,7 @@ A simple console application built on C that can be used to do some simple libra
 - List the book count in the list
 - Display the book list arranged in ascending order based on the accession number
 
-Supports upto 50 instances of book info storage; increase it by changing the array size for the library structure, i.e. change the `50` in line 21 (the line has the code `lib[50];`) to whatever number you wish.
+Supports upto 50 instances of book info storage; increase it by changing the array size for the library structure, i.e. change the `50` in line 21 (the line has the code `lib[50];`) to whatever number you wish and recompile.
 
 # Special thanks
 
