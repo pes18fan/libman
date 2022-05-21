@@ -1,6 +1,6 @@
 # libman
 
-A simple console application built on C that can be used to do some simple library management tasks.
+A simple library management terminal app written in C.
 
 # Capabilities
 
