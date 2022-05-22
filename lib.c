@@ -167,9 +167,7 @@ int book_count()
         i++;
     }
 
-    int n = i;
-
-    return n;
+    return i;
 }
  
 void book_sort() 
