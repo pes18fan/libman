@@ -2,13 +2,13 @@
 #include <stdlib.h>
 #include <string.h>
 
-void main_menu();
-void add_book_info();
-void read_book_info();
-void read_author();
-void list_title();
-int book_count();
-void book_sort();
+void main_menu(void);
+void add_book_info(void);
+void read_book_info(void);
+void read_author(void);
+void list_title(void);
+int book_count(void);
+void book_sort(void);
  
 FILE* fp;
  
@@ -19,11 +19,12 @@ struct Library {
     float price;
 } lib[50];
  
-int main() {
+int main(void) {
     main_menu();
+    return 0;
 }
 
-void main_menu() {
+void main_menu(void) {
     int option;
     int bc;
 
@@ -64,7 +65,7 @@ void main_menu() {
     }
 }
  
-void add_book_info() {
+void add_book_info(void) {
     fp = fopen("lib.dat", "a");
  
     int i, newbookc;
@@ -94,7 +95,7 @@ void add_book_info() {
     main_menu();
 }
  
-void read_book_info() {
+void read_book_info(void) {
     int i = 0;
  
     fp = fopen("lib.dat", "r");
@@ -115,7 +116,7 @@ void read_book_info() {
     main_menu();
 }
  
-void read_author() {
+void read_author(void) {
     int i = 0;
     char auname[30];
 
@@ -137,7 +138,7 @@ void read_author() {
     main_menu();
 }
  
-void list_title() {
+void list_title(void) {
     int i, acc_num;
  
     printf("Enter accession number for book\n");
@@ -157,7 +158,7 @@ void list_title() {
     main_menu();
 }
 
-int book_count()
+int book_count(void)
 {
     int i = 0;
 
@@ -170,7 +171,7 @@ int book_count()
     return i;
 }
  
-void book_sort() 
+void book_sort(void) 
 {
     int i = 0, n = book_count();
     struct Library temp;
